@@ -63,7 +63,8 @@ class URLShortenerController extends Controller
 
     public function getShortenedURLs()
     {
-        $shortenedURLs = UrlMapping::all();
+        $shortenedURLs = UrlMapping::all()
+            ->sortByDesc('click_count');
 
         return response()->json(['shortenedURLs' => $shortenedURLs]);
     }
